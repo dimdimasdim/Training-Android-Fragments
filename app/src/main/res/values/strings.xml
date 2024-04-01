@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Playground</string>
+    <string name="label_chat">Chat</string>
+    <string name="label_calls">Calls</string>
+    <string name="label_status">Status</string>
+    <string name="label_whatsapp_clone">Whatsapp Clone</string>
 </resources>
