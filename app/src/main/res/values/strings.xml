@@ -4,4 +4,6 @@
     <string name="label_calls">Calls</string>
     <string name="label_status">Status</string>
     <string name="label_whatsapp_clone">Whatsapp Clone</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

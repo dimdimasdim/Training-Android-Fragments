@@ -15,4 +15,23 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_teal_green"/>
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorHeight="4dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabIndicatorFullWidth="true"
+        app:tabBackground="@drawable/tab_color_selector"
+        app:tabIndicatorColor="@color/color_white"
+        app:tabSelectedTextColor="@color/color_white"
+        app:tabTextColor="@color/color_text_disable"/>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
