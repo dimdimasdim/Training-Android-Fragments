@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dimas.androidplayground.adapter.ChatAdapter
 import com.dimas.androidplayground.databinding.FragmentChatBinding
+import com.dimas.androidplayground.model.Chat
 import com.dimas.androidplayground.utils.BundleConstant
 
 
@@ -18,6 +21,8 @@ class ChatFragment : Fragment() {
     private var title: String? = null
     private var button: String? = null
     private var message: String? = null
+
+    private var adapter: ChatAdapter? = null
 
     companion object {
         @JvmStatic
@@ -50,12 +55,27 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            textContent.text = title
-            btnContent.text = button
-            btnContent.setOnClickListener {
-                Toast.makeText(it.context, message, Toast.LENGTH_SHORT).show()
+            if (adapter == null) adapter = ChatAdapter(chatList())
+            listChat.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context)
+                adapter = this@ChatFragment.adapter
             }
         }
+    }
+
+    private fun chatList(): MutableList<Chat>{
+        return mutableListOf(
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+            Chat(),
+        )
     }
 
     override fun onDestroyView() {
