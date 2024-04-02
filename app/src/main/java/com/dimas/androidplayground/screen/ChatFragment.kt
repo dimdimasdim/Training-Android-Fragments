@@ -1,12 +1,15 @@
 package com.dimas.androidplayground.screen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dimas.androidplayground.R
 import com.dimas.androidplayground.adapter.ChatAdapter
 import com.dimas.androidplayground.databinding.FragmentChatBinding
 import com.dimas.androidplayground.model.Chat
@@ -55,7 +58,7 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            if (adapter == null) adapter = ChatAdapter(chatList())
+            if (adapter == null) adapter = ChatAdapter(chatList(view.context))
             listChat.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
@@ -64,17 +67,57 @@ class ChatFragment : Fragment() {
         }
     }
 
-    private fun chatList(): MutableList<Chat>{
+    private fun chatList(context: Context): MutableList<Chat>{
         return mutableListOf(
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
-            Chat(),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.woman),
+                username = "Jane",
+                message = "Hi, I'am using whatsapp",
+                date = "08:58",
+                unreadMessage = 0
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.male),
+                username = "Mark",
+                message = "How are you today",
+                date = "today",
+                unreadMessage = 1
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.male),
+                username = "Donny",
+                message = "Thank you",
+                date = "Yesterday",
+                unreadMessage = 1
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.male),
+                username = "Bryan",
+                message = "Okay, See You",
+                date = "Monday",
+                unreadMessage = 0
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.woman),
+                username = "Jessica",
+                message = "Hmm...",
+                date = "Monday",
+                unreadMessage = 0
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.male),
+                username = "Putra",
+                message = "Oke",
+                date = "Last Week",
+                unreadMessage = 0
+            ),
+            Chat(
+                image = ContextCompat.getDrawable(context, R.drawable.woman),
+                username = "Gaby",
+                message = "Wait a minute",
+                date = "Last Week",
+                unreadMessage = 0
+            )
         )
     }
 
