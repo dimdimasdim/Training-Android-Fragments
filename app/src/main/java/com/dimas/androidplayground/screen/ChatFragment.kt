@@ -81,7 +81,7 @@ class ChatFragment : Fragment() {
                 username = "Mark",
                 message = "How are you today",
                 date = "today",
-                unreadMessage = 1
+                unreadMessage = 8
             ),
             Chat(
                 image = ContextCompat.getDrawable(context, R.drawable.male),
