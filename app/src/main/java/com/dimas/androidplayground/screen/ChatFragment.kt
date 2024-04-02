@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.androidplayground.R
@@ -70,11 +71,18 @@ class ChatFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = this@ChatFragment.adapter
             }
+
+            buttonAdd.apply {
+                isVisible = title?.contains("Chat") ?: false
+                setOnClickListener {
+                    showFormChat()
+                }
+            }
         }
     }
 
-    private fun showDetailChat(data: Chat) {
-        Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+    private fun showFormChat() {
+        Toast.makeText(context, "data.message", Toast.LENGTH_SHORT).show()
     }
 
     private fun showAlertDialog(position: Int) {
