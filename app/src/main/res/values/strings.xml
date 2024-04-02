@@ -7,4 +7,9 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_plus">plus</string>
+    <string name="label_form_chat">Form Chat</string>
+    <string name="label_username">Username</string>
+    <string name="label_male">Male</string>
+    <string name="label_female">Female</string>
+    <string name="label_submit">Submit</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.dimas.androidplayground.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -52,6 +53,12 @@ class ChatAdapter(
 
             }
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addNewChat(chat: Chat) {
+        items.add(0, chat)
+        notifyDataSetChanged()
     }
 
     fun removeItemChat(position: Int) {

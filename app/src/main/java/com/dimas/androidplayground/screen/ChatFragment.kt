@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.androidplayground.R
 import com.dimas.androidplayground.adapter.ChatAdapter
 import com.dimas.androidplayground.databinding.FragmentChatBinding
+import com.dimas.androidplayground.dialog.ChatDialogFragment
 import com.dimas.androidplayground.model.Chat
 import com.dimas.androidplayground.utils.BundleConstant
 
@@ -82,11 +83,12 @@ class ChatFragment : Fragment() {
     }
 
     private fun showFormChat() {
-        Toast.makeText(context, "data.message", Toast.LENGTH_SHORT).show()
+        ChatDialogFragment.newInstance(actionSubmit = { data ->
+            adapter?.addNewChat(data)
+        }).show(childFragmentManager, ChatDialogFragment::class.java.simpleName)
     }
 
     private fun showAlertDialog(position: Int) {
-        Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
         AlertDialog.Builder(context)
             .setTitle("Delete Chat")
             .setMessage("Are you sure you want to delete this chat?")
