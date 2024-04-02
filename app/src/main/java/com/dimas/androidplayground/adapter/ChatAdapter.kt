@@ -11,7 +11,8 @@ import com.dimas.androidplayground.databinding.ItemChatBinding
 import com.dimas.androidplayground.model.Chat
 
 class ChatAdapter(
-    private val items: MutableList<Chat>
+    private val items: MutableList<Chat>,
+    private val onLongClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<ChatViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val binding = ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,7 +24,7 @@ class ChatAdapter(
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         holder.bind(items[position])
     }
-    class ChatViewHolder(private val binding: ItemChatBinding) :
+    inner class ChatViewHolder(private val binding: ItemChatBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Chat) {
             with(binding) {
@@ -44,7 +45,17 @@ class ChatAdapter(
                     )
                 }
 
+                root.setOnLongClickListener {
+                    onLongClick(adapterPosition)
+                    return@setOnLongClickListener true
+                }
+
             }
         }
+    }
+
+    fun removeItemChat(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
     }
 }

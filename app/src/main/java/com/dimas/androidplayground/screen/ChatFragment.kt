@@ -1,5 +1,6 @@
 package com.dimas.androidplayground.screen
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -58,13 +59,36 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            if (adapter == null) adapter = ChatAdapter(chatList(view.context))
+            if (adapter == null) adapter = ChatAdapter(
+                items = chatList(view.context),
+                onLongClick = { position ->
+                    showAlertDialog(position)
+                }
+            )
             listChat.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context)
                 adapter = this@ChatFragment.adapter
             }
         }
+    }
+
+    private fun showDetailChat(data: Chat) {
+        Toast.makeText(context, data.message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showAlertDialog(position: Int) {
+        Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(context)
+            .setTitle("Delete Chat")
+            .setMessage("Are you sure you want to delete this chat?")
+            .setPositiveButton("Yes"
+            ) { _, _ ->
+                adapter?.removeItemChat(position)
+            }
+            .setNegativeButton("No", null)
+            .setIcon(R.drawable.warning)
+            .show()
     }
 
     private fun chatList(context: Context): MutableList<Chat>{
