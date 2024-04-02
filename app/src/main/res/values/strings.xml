@@ -12,4 +12,5 @@
     <string name="label_male">Male</string>
     <string name="label_female">Female</string>
     <string name="label_submit">Submit</string>
+    <string name="label_message">Message</string>
 </resources>

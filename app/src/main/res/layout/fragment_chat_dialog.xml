@@ -44,7 +44,7 @@
                 android:id="@+id/edtMessage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:hint="@string/label_username"
+                android:hint="@string/label_message"
                 app:layout_constraintTop_toBottomOf="@id/edtUsername"
                 android:layout_marginTop="8dp"
                 android:layout_width="0dp"

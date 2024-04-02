@@ -36,10 +36,6 @@ class ChatDialogFragment : DialogFragment() {
         return R.style.AppTheme_Dialog
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
