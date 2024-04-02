@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeViewPager() {
         val adapter = MainPagerAdapter(this)
-        adapter.addFragment(ChatFragment.newInstance())
-        adapter.addFragment(ChatFragment.newInstance())
-        adapter.addFragment(ChatFragment.newInstance())
+        adapter.addFragment(ChatFragment.newInstance("Chat Screen", "Klik Chat", "Toast Dari Chat Screen"))
+        adapter.addFragment(ChatFragment.newInstance("Call Screen", "Klik Call", "Toast Dari Call Screen"))
+        adapter.addFragment(ChatFragment.newInstance("Status Screen", "Klik Status", "Toast Dari Status Screen"))
         with(binding) {
             vpMain.adapter = adapter
             TabLayoutMediator(tabMain, vpMain) { tab, position ->
